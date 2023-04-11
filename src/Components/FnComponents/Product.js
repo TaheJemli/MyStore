@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Card, Button, Badge } from "react-bootstrap";
+import { NavLink } from "react-router-dom";
 import "./Product.css"
 
 const Product = (props) => {
@@ -34,7 +35,9 @@ const Product = (props) => {
     <Card style={{ width: '18rem' }} className={BestProduct?BestProductClass:''}>
     <Card.Img variant="top" src={require(`../../assets/images/${props.product.img}`)} />
     <Card.Body>
+        <NavLink to={`/products/${props.product.name}`}>
       <Card.Title>{props.product.name}</Card.Title>
+      </NavLink>
       <Card.Text>{props.product.description}</Card.Text>
       <Card.Text><Badge bg="warning" text="dark">price :</Badge>&nbsp;{props.product.price}</Card.Text>
       <Card.Text><Badge bg="warning" text="dark">like :</Badge>&nbsp;{count}</Card.Text>
