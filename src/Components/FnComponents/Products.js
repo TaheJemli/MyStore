@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import products from "../../mock/Project";
 import { Container, Alert , Row, Col } from "react-bootstrap";
 import Product from "./Product";
+import { getallProducts } from "../../service/api";
 
 const Products = () => {
   const [isBuy, setIsBuy] = useState(false);
@@ -20,6 +21,12 @@ const Products = () => {
     setTimeout(() => {
       setIsBuy(false);
     }, 2000);
+  };
+
+  const loadProducts = async () => {
+    const response = await getallProducts();
+    console.log("response", response.data);
+    setListProducts(response.data);
   };
 
   return (

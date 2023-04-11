@@ -2,10 +2,21 @@ import { useState, useEffect } from "react";
 import { Container, Col, Row, Card } from "react-bootstrap";
 import products from "../../mock/Project";
 import { useParams } from "react-router-dom";
+import { getallProducts } from "../../service/api";
 
 const ProductDetails = () => {
-    const {name} = useParams();
-    const product = products.find((product) => product.name === name)
+    //const {name} = useParams();
+    //const product = products.find((product) => product.name === name)
+
+    const {id} = useParams();
+    const [product, setProduct] = useState();
+
+    const getProdById = async () => {
+        const response = await getallProducts();
+        const product = response.data.find((product) => product.id === id);
+        setProduct(product);
+    }
+
 
     return (<>
     {product === undefined ? (

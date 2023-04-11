@@ -10,6 +10,11 @@ const NotFound = React.lazy(()=> import('./Components/FnComponents/NotFound'))
 const NavigationBar = React.lazy(()=> import('./Components/FnComponents/NavBar'))
 //import ProductDetails from './Components/FnComponents/ProductDetails';
 const ProductDetails = React.lazy(()=> import('./Components/FnComponents/ProductDetails'))
+
+const AddProduct = React.lazy(()=> import('./Components/FnComponents/AddProduct'))
+
+const UpdateProduct = React.lazy(()=> import('./Components/FnComponents/UpdateProduct'))
+
 function App() {
   return (
     <div>
@@ -18,6 +23,8 @@ function App() {
       <Routes>
         <Route exac path="/products" element={<Products />} />
         <Route exac path="/products/:name" element={<ProductDetails />} />
+        <Route exac path="/addprod" element={<AddProduct />} />
+        <Route exac path="/products/update/:id" element={<UpdateProduct />} />
         <Route  path="*" element={<NotFound />} />
       </Routes>
       </React.Suspense>      
