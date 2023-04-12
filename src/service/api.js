@@ -4,6 +4,11 @@ export const getallProducts = async (id) => {
 id = id || '';
 return await axios.get(`${url}/${id}`);
 }
+
+export const getProduct = async (id) => {
+    return await axios.get(`${url}/${id}`);
+}
+
 export const addProduct = async (product) => {
 return await axios.post(url,product);
 }

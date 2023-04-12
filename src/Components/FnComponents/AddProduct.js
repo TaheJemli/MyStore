@@ -28,22 +28,22 @@ const onFileHandle = (e) => {
 
 };
 
-const submitHandler = async() => {
-  const res = await addProduct(product);
-  if (res.status === 201)
-  navigate("/products");
+const submitHandler = async(e) => {
+  e.preventDefault();
+  addProduct(product).then(()=>navigate('/products'))
 }
 
 
   return (
     <Container style={{ marginTop: "50px" }}>
       <h2>Add Your Product</h2>
-    <Form>
+    <Form onSubmit={submitHandler}>
     <Form.Group className="mb-3" controlId="formBasicEmail">
       <Form.Label>Name</Form.Label>
       <Form.Control
        type="text"
        name="name"
+       value={name} 
        placeholder="Name" 
        onChange={(e) => onValueChange(e)}/>
     </Form.Group>
@@ -88,7 +88,7 @@ const submitHandler = async() => {
     </Form.Group>
 
 
-    <Button variant="primary" type="submit" onClick={ () => submitHandler()}>
+    <Button variant="primary" type="submit">
       Submit
     </Button>
   </Form>

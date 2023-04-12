@@ -22,9 +22,9 @@ function App() {
       <NavigationBar/>
       <Routes>
         <Route exac path="/products" element={<Products />} />
-        <Route exac path="/products/:name" element={<ProductDetails />} />
-        <Route exac path="/addprod" element={<AddProduct />} />
-        <Route exac path="/products/update/:id" element={<UpdateProduct />} />
+        <Route  path="/products/:name" element={<ProductDetails />} />
+        <Route  path="/addprod" element={<AddProduct />} />
+        <Route  path="/products/update/:id" element={<UpdateProduct />} />
         <Route  path="*" element={<NotFound />} />
       </Routes>
       </React.Suspense>      
