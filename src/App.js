@@ -18,6 +18,8 @@ const AddReduxProduct = React.lazy(()=> import('./Components/FnComponents/AddRed
 
 const UpdateProduct = React.lazy(()=> import('./Components/FnComponents/UpdateProduct'))
 
+const Cart = React.lazy(() => import('./Components/FnComponents/Cart'));
+
 function App() {
   const dispatch = useDispatch();
   return (
@@ -30,6 +32,7 @@ function App() {
         <Route  path="/addprod" element={<AddProduct />} />
         <Route  path="/addprodred" element={<AddReduxProduct />} />
         <Route  path="/products/update/:id" element={<UpdateProduct />} />
+        <Route path="/cart" element={<Cart />} />
         <Route  path="*" element={<NotFound />} />
       </Routes>
       </React.Suspense>      
