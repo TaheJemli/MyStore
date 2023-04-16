@@ -1,6 +1,7 @@
 import './App.css';
 import React from 'react';
 import {Route, Routes} from "react-router-dom"
+import { useDispatch } from 'react-redux';
 //import Products from './Components/ClassComponents/Products';
 //import Products from './Components/FnComponents/Products';
 const Products = React.lazy(()=> import('./Components/FnComponents/Products'))
@@ -13,9 +14,12 @@ const ProductDetails = React.lazy(()=> import('./Components/FnComponents/Product
 
 const AddProduct = React.lazy(()=> import('./Components/FnComponents/AddProduct'))
 
+const AddReduxProduct = React.lazy(()=> import('./Components/FnComponents/AddReduxProduct'))
+
 const UpdateProduct = React.lazy(()=> import('./Components/FnComponents/UpdateProduct'))
 
 function App() {
+  const dispatch = useDispatch();
   return (
     <div>
       <React.Suspense fallback={<h1> Loading... </h1>}>
@@ -24,6 +28,7 @@ function App() {
         <Route exac path="/products" element={<Products />} />
         <Route  path="/products/:name" element={<ProductDetails />} />
         <Route  path="/addprod" element={<AddProduct />} />
+        <Route  path="/addprodred" element={<AddReduxProduct />} />
         <Route  path="/products/update/:id" element={<UpdateProduct />} />
         <Route  path="*" element={<NotFound />} />
       </Routes>

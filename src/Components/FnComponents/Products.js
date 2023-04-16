@@ -4,12 +4,16 @@ import { Container, Alert , Row, Col } from "react-bootstrap";
 import Product from "./Product";
 import { getallProducts, deleteProduct } from "../../service/api";
 import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteProductReducer, selectProducts } from "../../redux/slices/productsSlice";
 
 const Products = () => {
   const [isBuy, setIsBuy] = useState(false);
   const [isWelcome, setIsWelcome] = useState(true);
   const [listproducts, setListProducts] = useState([]);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const [prods] = useSelector(selectProducts);
 
   useEffect(() => {
     setTimeout(() => {
@@ -25,22 +29,24 @@ const Products = () => {
     }, 2000);
   };
 
-  const loadProducts = async () => {
-    const response = await getallProducts();
-    console.log("response", response.data);
-    setListProducts(response.data);
-  };
+  // const loadProducts = async () => {
+  //   const response = await getallProducts();
+  //   console.log("response", response.data);
+  //   setListProducts(response.data);
+  // };
 
 
   const deleteProd = async (id) => {
     const result = window.confirm("Are you sure you want to delete?");
   if (result) {
     await deleteProduct(id).then(()=>navigate('/products'))
-    loadProducts(); }
+    dispatch(deleteProductReducer(id));
+    //loadProducts(); 
+  }
 }
-useEffect(()=>{
-  loadProducts();
-},[])
+// useEffect(()=>{
+//   loadProducts();
+// },[])
 
   return (
     <Container>
@@ -58,7 +64,7 @@ useEffect(()=>{
       )}
 
       <Row>
-        { listproducts.map((prod, index) => (
+        { prods.map((prod, index) => (
           <Col key={index}>
             <Product
               product={prod}

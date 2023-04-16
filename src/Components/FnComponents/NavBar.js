@@ -12,6 +12,7 @@ const NavigationBar = () => {
             <Nav className="me-auto">
               <Nav.Link as={NavLink} to="/products" style={({isActive})=> ({textDecoration: isActive ? "underline": "none"})} >Products</Nav.Link>
               <Nav.Link as={NavLink} to="/addProd" style={({isActive})=> ({textDecoration: isActive ? "underline": "none"})}>Add New product</Nav.Link>
+              <Nav.Link as={NavLink} to="/addProdred" style={({isActive})=> ({textDecoration: isActive ? "underline": "none"})}>Add New product using Redux</Nav.Link>
               <Nav.Link as={NavLink} to="productsFF" style={({isActive})=> ({textDecoration: isActive ? "underline": "none"})} >Panier</Nav.Link>
             </Nav>
           </Navbar.Collapse>
